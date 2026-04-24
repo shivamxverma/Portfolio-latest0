@@ -78,7 +78,7 @@ async function fetchLifetimeTotal(token, username, createdAt) {
   );
 }
 
-export async function fetchGitHubContributions(username = "shivabhattacharjee") {
+export async function fetchGitHubContributions(username = "shivamxverma") {
   const token = process.env.GITHUB_TOKEN;
   if (!token) return { contributions: [], lifetimeTotal: 0 };
 

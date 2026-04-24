@@ -10,13 +10,13 @@ import { ScrollToTopButton } from "@/components/scroll-to-top";
 
 export const metadata = {
   title: {
-    template: "%s | Shiva Bhattacharjee",
-    default: "Shiva Bhattacharjee - Full Stack Developer",
+    template: "%s | Shivam Verma",
+    default: "Shivam Verma - Full Stack Developer",
   },
   description:
     "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
   keywords: [
-    "Shiva Bhattacharjee",
+    "Shivam Verma",
     "Full Stack Developer",
     "React",
     "Next.js",
@@ -27,9 +27,9 @@ export const metadata = {
     "Portfolio",
     "Software Engineer",
   ],
-  authors: [{ name: "Shiva Bhattacharjee" }],
-  creator: "Shiva Bhattacharjee",
-  publisher: "Shiva Bhattacharjee",
+  authors: [{ name: "Shivam Verma" }],
+  creator: "Shivam Verma",
+  publisher: "Shivam Verma",
   robots: {
     index: true,
     follow: true,
@@ -49,22 +49,22 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://shiva.codes",
-    title: "Shiva Bhattacharjee - Full Stack Developer",
+    title: "Shivam Verma - Full Stack Developer",
     description:
       "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
-    siteName: "Shiva Bhattacharjee Portfolio",
+    siteName: "Shivam Verma Portfolio",
     images: [
       {
         url: "https://shiva.codes/opengraph.png",
         width: 1200,
         height: 630,
-        alt: "Shiva Bhattacharjee - Full Stack Developer",
+        alt: "Shivam Verma - Full Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shiva Bhattacharjee - Full Stack Developer",
+    title: "Shivam Verma - Full Stack Developer",
     description:
       "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
     images: ["https://shiva.codes/opengraph.png"],
@@ -96,7 +96,7 @@ export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Shiva Bhattacharjee",
+    name: "Shivam Verma",
     jobTitle: "Full Stack Developer",
     description:
       "Full stack developer who loves to build products that make people's life easier",

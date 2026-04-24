@@ -5,7 +5,7 @@ import XTwitterIcon from "@/components/icons/x-twitter";
 import GithubIcon from "@/components/icons/github";
 import LinkedinIcon from "@/components/icons/linkedin";
 import DiscordIcon from "@/components/icons/discord";
-import { IoIosMail } from "react-icons/io";
+import { IoIosMail, IoLogoYoutube } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -27,40 +27,46 @@ const fadeUp = (delay = 0) => ({
 const socialLinks = [
   {
     label: "Twitter",
-    href: "https://x.com/sh17va",
+    href: "https://x.com/Shivam_v99",
     icon: <XTwitterIcon className="h-3.5 w-3.5" />,
     external: true,
     platform: "twitter",
-    username: "sh17va",
+    username: "Shivam_v99",
   },
   {
     label: "Github",
-    href: "https://github.com/shivabhattacharjee",
+    href: "https://github.com/shivamxverma",
     icon: <GithubIcon className="h-3.5 w-3.5" />,
     external: true,
     platform: "github",
-    username: "shivabhattacharjee",
+    username: "shivamxverma",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/shiva-bhattacharjee/",
+    href: "https://www.linkedin.com/in/shivamv99/",
     icon: <LinkedinIcon className="h-3.5 w-3.5" />,
     external: true,
     platform: "linkedin",
-    username: "shiva-bhattacharjee",
+    username: "shivamv99",
   },
   {
     label: "Discord",
-    href: "https://discordapp.com/users/503152077824851968",
+    href: "https://discord.com/channels/shivamverma9005",
     icon: <DiscordIcon className="h-3.5 w-3.5" />,
     external: true,
     platform: "discord",
-    username: "503152077824851968",
+    username: "shivamverma9005",
   },
   {
     label: "Email",
-    href: "mailto:hello@theshiva.xyz",
+    href: "mailto:shivam.verma.dev00@gmail.com",
     icon: <IoIosMail size="14px" />,
+    external: true,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@Shivamxverma99",
+    icon: <IoLogoYoutube size="14px" />,
     external: true,
   },
 ];
@@ -280,50 +286,16 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <h1 className="text-2xl font-bold uppercase tracking-tight md:text-4xl">
-              Shiva Bhattacharjee
+              Shivam Verma
             </h1>
           </div>
 
           <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground md:text-sm">
-            I work on AI, LLMs, and building developer tools on top of them
+            I build distributed systems, async pipelines, and scalable backend applications
           </p>
         </div>
 
-        <motion.div
-          className={`flex flex-row items-end gap-4 p-1 ${GeistPixelSquare.className}`}
-          {...fadeUp(0.08)}
-        >
-          <CornerBrackets>
-            <Button
-              size="sm"
-              onClick={() => {
-                navigator.clipboard.writeText("npx shivadev");
-                toast.success("Copied to clipboard", {
-                  description: "You can now paste it in your terminal to see the cli version of my portfolio",
-                  icon: <ClipboardIcon className="h-4 w-4" />,
-                  classNames: { description: "font-space-mono" },
-                });
-              }}
-            >
-              <ClipboardIcon className="mr-1.5 h-3 w-3" /> npx shivadev
-            </Button>
-          </CornerBrackets>
-          <div className="relative -ml-1 flex items-center">
-            <svg
-              className="pointer-events-none size-5 shrink-0 rotate-[190deg] text-muted-foreground/40"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 323.057 323.057"
-              xmlSpace="preserve"
-              fill="currentColor"
-            >
-              <path d="M281.442 256.312c-47.124 59.364-139.536 44.676-160.956-29.376-1.224-3.672-1.836-7.956-2.448-11.628 49.572-11.016 97.92-47.124 102.204-90.576 3.672-39.168-36.108-50.796-62.424-28.764-31.212 26.316-53.244 64.872-55.08 105.875-31.824 4.284-63.036-4.284-80.172-35.496-28.764-52.631 9.792-123.624 61.2-144.432 5.508-1.836 3.06-10.404-2.448-8.568C10.326 33.544-26.394 132.688 21.954 191.439c18.972 22.645 49.572 29.988 81.396 26.316 4.284 41.616 36.72 74.664 75.275 87.516 44.676 14.688 85.68-6.731 111.996-41.616 4.285-5.508-4.896-12.239-9.179-7.343M144.354 132.688c9.792-13.464 22.644-28.764 39.168-34.272 15.911-5.508 21.42 16.524 22.031 26.316.612 12.24-7.956 23.256-15.912 31.824-16.523 18.971-44.063 35.496-72.215 42.839 1.836-23.868 13.464-47.123 26.928-66.707" />
-              <path d="M315.713 233.668c-17.136 0-34.884 1.224-51.408 5.508-6.731 1.836-3.672 11.016 3.061 9.792 13.464-2.448 27.54-1.836 41.004-1.224-.612 7.955-1.224 16.523-2.448 24.479-1.224 6.12-5.508 15.3-1.836 21.42 1.836 3.061 4.896 3.061 7.956 1.836 7.344-3.06 7.344-15.912 8.568-22.644 1.836-11.017 2.447-21.42 2.447-32.437 0-3.67-3.672-6.73-7.344-6.73" />
-            </svg>
-            <span className="ml-2 -rotate-[8deg] whitespace-nowrap text-[10px] text-muted-foreground/50 md:text-xs">
-              try this in <br /> your terminal
-            </span>
-          </div>
-        </motion.div>
+
       </motion.div>
 
       <div className="space-y-8">
@@ -332,10 +304,10 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             About Me
           </h5>
           <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            I&apos;m Shiva, an <strong className="font-semibold text-foreground">Applied AI Engineer</strong>. Got into coding in 9th grade, spent a few years doing freelance work with PHP and jQuery before landing on React. The project that taught me the most was <strong className="font-semibold text-foreground"><a href="https://github.com/shivabhattacharjee/animetrix-next" target="_blank" className="underline">Animetrix</a></strong>, an anime streaming site I built in college that hit <strong className="font-semibold text-foreground">15k users and 200 GitHub stars </strong>. It was technically piracy (I was naive), broke constantly under traffic, which taught me about scalability. I rewrote the infra from scratch and got it to handle <strong className="font-semibold text-foreground">20k users</strong>, picking up <strong className="font-semibold text-foreground">Redis, Docker, horizontal scaling, and YAML </strong> along the way. Eventually got DMCA&apos;d. Worth it.
+            I&apos;m Shivam, a final-year CSE student at <strong className="font-semibold text-foreground">IIIT Nagpur</strong>. I specialize in backend engineering and building scalable distributed systems. My technical journey involves working deeply with <strong className="font-semibold text-foreground">TypeScript, Node.js, and AWS</strong>, creating production-ready async pipelines and AI-powered platforms. Over the past few years, I&apos;ve spent my time architecting robust solutions like <strong className="font-semibold text-foreground"><a href="https://github.com/shivamxverma/CodeSM" target="_blank" className="underline">CodeSM</a></strong>, a secure remote code execution engine powered by <strong className="font-semibold text-foreground">BullMQ, Redis, and isolated Docker sandboxes</strong> handling concurrent multi-language submissions at scale.
           </p>
           <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            Won <strong className="font-semibold text-foreground">5 hackathons</strong>, including qualifying for <strong className="font-semibold text-foreground">Smart India Hackathon 2023</strong> in my first semester, first from my college with roughly a ~1% selection rate. Since then I&apos;ve shipped production AI systems at a few early-stage startups. One of them I joined as a founding engineer, where I got deep into <strong className="font-semibold text-foreground">fine-tuning LLMs on low-resource Indian languages</strong> using <strong className="font-semibold text-foreground">Unsloth</strong>, containerizing models with <strong className="font-semibold text-foreground">Docker</strong>, self-hosting on servers, and exposing them as public APIs. Right now I&apos;m working at <strong className="font-semibold text-foreground"><a href="https://www.usebez.ai" target="_blank" className="underline">Bez</a></strong>, building an <strong className="font-semibold text-foreground">AI copilot for jewellery designers</strong> — where I get to work with <strong className="font-semibold text-foreground">AI agent workflows</strong>, <strong className="font-semibold text-foreground">vector search</strong>, <strong className="font-semibold text-foreground">RAG-based memory</strong>, and <strong className="font-semibold text-foreground">multimodal image pipelines</strong>.
+            Beyond my projects like <strong className="font-semibold text-foreground"><a href="https://github.com/shivamxverma/Storix" target="_blank" className="underline">Storix</a></strong> and <strong className="font-semibold text-foreground"><a href="https://github.com/shivamxverma/Chatterly" target="_blank" className="underline">Chatterly</a></strong>, where I focused on async task processing and horizontally scalable real-time messaging, I also have a strong foundation in algorithmic problem solving. I am an avid competitive programmer, ranking in the <strong className="font-semibold text-foreground">top 5% globally on LeetCode</strong> with an 1800+ rating, and holding a <strong className="font-semibold text-foreground">3-star rating on CodeChef</strong>. I am currently looking for backend or full-stack engineering roles where I can continue tackling complex architectural challenges.
           </p>
         </motion.div>
 
