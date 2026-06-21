@@ -20,9 +20,9 @@ const Projects = async () => {
     <Layout
       showHeader
       title="Projects"
-      subtitle="A collection of things I've built."
+      subtitle="Backend-heavy systems, async pipelines, real-time applications, and developer tools."
     >
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {projectsWithStars.map((project, index) => (
           <ProjectCard key={index} index={index} {...project} />
         ))}

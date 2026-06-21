@@ -10,26 +10,26 @@ import { ScrollToTopButton } from "@/components/scroll-to-top";
 
 export const metadata = {
   title: {
-    template: "%s | Shivam Verma",
-    default: "Shivam Verma - Full Stack Developer",
+    template: "%s | Shivam Kumar Verma",
+    default: "Shivam Kumar Verma - Software Engineer",
   },
   description:
-    "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
+    "Software engineer with strong backend depth and full-stack execution ability, focused on scalable systems, async workflows, real-time products, and developer tools.",
   keywords: [
-    "Shivam Verma",
+    "Shivam Kumar Verma",
+    "Software Engineer",
     "Full Stack Developer",
+    "Backend Engineer",
     "React",
     "Next.js",
-    "JavaScript",
-    "TypeScript",
     "Node.js",
-    "Web Development",
+    "TypeScript",
+    "Distributed Systems",
     "Portfolio",
-    "Software Engineer",
   ],
-  authors: [{ name: "Shivam Verma" }],
-  creator: "Shivam Verma",
-  publisher: "Shivam Verma",
+  authors: [{ name: "Shivam Kumar Verma" }],
+  creator: "Shivam Kumar Verma",
+  publisher: "Shivam Kumar Verma",
   robots: {
     index: true,
     follow: true,
@@ -42,36 +42,34 @@ export const metadata = {
     },
   },
   icons: {
-    icon: "https://notion-avatar.app/api/svg/eyJmYWNlIjo0LCJub3NlIjozLCJtb3V0aCI6MSwiZXllcyI6MTAsImV5ZWJyb3dzIjoxLCJnbGFzc2VzIjoxMCwiaGFpciI6MzIsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MSwiY29sb3IiOiJ0cmFuc3BhcmVudCIsInNoYXBlIjoibm9uZSJ9",
     shortcut: "/favicon.ico",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://shiva.codes",
-    title: "Shivam Verma - Full Stack Developer",
+    url: "https://www.shivamworks.dev/",
+    title: "Shivam Kumar Verma - Software Engineer",
     description:
-      "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
-    siteName: "Shivam Verma Portfolio",
+      "Backend-heavy full-stack engineer building scalable systems, async workflows, real-time products, and developer-focused tools.",
+    siteName: "Shivam Kumar Verma Portfolio",
     images: [
       {
-        url: "https://shiva.codes/opengraph.png",
+        url: "https://www.shivamworks.dev/opengraph.png",
         width: 1200,
         height: 630,
-        alt: "Shivam Verma - Full Stack Developer",
+        alt: "Shivam Kumar Verma - Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shivam Verma - Full Stack Developer",
+    title: "Shivam Kumar Verma - Software Engineer",
     description:
-      "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
-    images: ["https://shiva.codes/opengraph.png"],
-    creator: "@sh17va",
+      "Backend-heavy full-stack engineer building scalable systems, async workflows, real-time products, and developer-focused tools.",
+    images: ["https://www.shivamworks.dev/opengraph.png"],
   },
   alternates: {
-    canonical: "https://shiva.codes",
+    canonical: "https://www.shivamworks.dev/",
   },
 };
 
@@ -96,12 +94,20 @@ export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Shivam Verma",
-    jobTitle: "Full Stack Developer",
+    name: "Shivam Kumar Verma",
+    jobTitle: "Software Engineer",
     description:
-      "Full stack developer who loves to build products that make people's life easier",
-    url: "https://shiva.codes",
-    image: "https://shiva.codes/opengraph.png",
+      "Backend-heavy full-stack engineer building scalable systems, async workflows, real-time products, and developer tools.",
+    url: "https://www.shivamworks.dev/",
+    sameAs: [
+      "https://www.shivamworks.dev/",
+      "https://github.com/shivamxverma",
+      "https://www.linkedin.com/in/shivamv99/",
+    ],
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "IIIT Nagpur",
+    },
   };
 
   return (

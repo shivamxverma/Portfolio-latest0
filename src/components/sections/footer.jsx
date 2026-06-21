@@ -128,7 +128,7 @@ const Footer = () => {
           )}
         </div>
         <p className="text-xs text-muted-foreground/60">
-          &copy; {new Date().getFullYear()} Shivam Verma. All rights
+          &copy; {new Date().getFullYear()} Shivam Kumar Verma. All rights
           reserved.
         </p>
       </div>

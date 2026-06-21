@@ -1,22 +1,18 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
-import XTwitterIcon from "@/components/icons/x-twitter";
+import { motion } from "motion/react";
+import Link from "next/link";
 import GithubIcon from "@/components/icons/github";
 import LinkedinIcon from "@/components/icons/linkedin";
-import DiscordIcon from "@/components/icons/discord";
-import { IoIosMail, IoLogoYoutube } from "react-icons/io";
+import HouseIcon from "@/components/icons/house";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import Link from "next/link";
-import { GeistPixelSquare } from "geist/font/pixel";
-import GitHubContributionGraph from "./contribution-graph";
-import ClipboardIcon from "@/components/icons/clipboard";
 import { CornerBrackets } from "@/components/ui/corner-brackets";
-import { notableAchievements } from "@/constants";
-
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import LocationIcon from "@/components/icons/location";
+import {
+  currentBuilding,
+  engineeringStrengths,
+  notableAchievements,
+} from "@/constants";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -26,199 +22,29 @@ const fadeUp = (delay = 0) => ({
 
 const socialLinks = [
   {
-    label: "Twitter",
-    href: "https://x.com/Shivam_v99",
-    icon: <XTwitterIcon className="h-3.5 w-3.5" />,
-    external: true,
-    platform: "twitter",
-    username: "Shivam_v99",
+    label: "Portfolio",
+    href: "https://www.shivamworks.dev/",
+    icon: <HouseIcon className="h-3.5 w-3.5" />,
   },
   {
-    label: "Github",
+    label: "GitHub",
     href: "https://github.com/shivamxverma",
     icon: <GithubIcon className="h-3.5 w-3.5" />,
-    external: true,
-    platform: "github",
-    username: "shivamxverma",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shivamv99/",
     icon: <LinkedinIcon className="h-3.5 w-3.5" />,
-    external: true,
-    platform: "linkedin",
-    username: "shivamv99",
-  },
-  {
-    label: "Discord",
-    href: "https://discord.com/channels/shivamverma9005",
-    icon: <DiscordIcon className="h-3.5 w-3.5" />,
-    external: true,
-    platform: "discord",
-    username: "shivamverma9005",
-  },
-  {
-    label: "Email",
-    href: "mailto:shivam.verma.dev00@gmail.com",
-    icon: <IoIosMail size="14px" />,
-    external: true,
-  },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/@Shivamxverma99",
-    icon: <IoLogoYoutube size="14px" />,
-    external: true,
   },
 ];
 
-function SocialPreviewCard({ loading, data, platform, username }) {
-
-
-  if (loading) {
-    return (
-      <div className="flex w-[320px] flex-col gap-4 font-space-mono animate-pulse">
-        <div className="flex items-center gap-3">
-          <div className="h-14 w-14 rounded-full bg-muted"></div>
-          <div className="flex flex-col gap-2">
-            <div className="h-4 w-32 rounded bg-muted"></div>
-            <div className="h-3 w-20 rounded bg-muted"></div>
-          </div>
-        </div>
-        <div className="h-10 w-full rounded bg-muted"></div>
-        <div className="h-4 w-24 rounded bg-muted"></div>
-        <div className="mt-2 flex gap-4">
-          <div className="h-4 w-16 rounded bg-muted"></div>
-          <div className="h-4 w-16 rounded bg-muted"></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!data) return null;
-
-  return (
-    <div className="flex w-[320px] flex-col gap-2 font-space-mono text-left">
-      {data.banner && (
-        <div className="-mx-4 -mt-4 mb-2 h-20 overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={data.banner} alt="Banner" className="h-full w-full object-cover" />
-        </div>
-      )}
-      <div className={`flex gap-3 relative z-10 ${data.banner ? "flex-col items-start -mt-12" : "items-center"}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={data.avatar || "https://github.com/shivabhattacharjee.png"}
-          alt={data.name}
-          className={`rounded-full object-cover bg-background ${data.banner ? "h-[68px] w-[68px] border-[3px] border-card" : "h-14 w-14 border border-border"}`}
-        />
-        <div className={`flex flex-col ${data.banner ? "-mt-1" : ""}`}>
-          <span className="font-doto text-base font-bold text-foreground">
-            {data.name}
-          </span>
-          <span className="text-sm text-muted-foreground">
-            {data.username}
-          </span>
-        </div>
-      </div>
-      {data.bio && (
-        <p className="text-sm text-foreground line-clamp-3">
-          {data.bio}
-        </p>
-      )}
-      {data.location && (
-        <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-          <LocationIcon className="h-4 w-4 shrink-0" />
-          <span className="line-clamp-1">{data.location}</span>
-        </div>
-      )}
-      {data.stats && data.stats.length > 0 && (
-        <div className="mt-2 flex gap-4 text-sm text-muted-foreground">
-          {data.stats.map((stat, i) => (
-            <span key={i}>
-              <strong className="font-doto font-semibold text-foreground">
-                {stat.value}
-              </strong>{" "}
-              {stat.label}
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function SocialButton({ label, href, icon, external, platform, username, data, loading }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-
-  const handleMouseMove = (e) => {
-    x.set(e.clientX - 160);
-    y.set(e.clientY + 12);
-  };
-
-  const handleMouseEnter = (e) => {
-    x.set(e.clientX - 160);
-    y.set(e.clientY + 12);
-    springX.jump(e.clientX - 160);
-    springY.jump(e.clientY + 12);
-    setIsHovered(true);
-  };
-
-  const content = (
-    <Link
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-    >
-      <CornerBrackets>
-        <Button size="sm" variant="noShadow">
-          {icon}
-          <span className="ml-1.5">{label}</span>
-        </Button>
-      </CornerBrackets>
-    </Link>
-  );
-
-  if (platform && username) {
-    return (
-      <div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setIsHovered(false)}
-        onMouseMove={handleMouseMove}
-        className="relative"
-      >
-        {content}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              initial={{ opacity: 0, x: -10, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -10, scale: 0.95 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="flex w-[320px] flex-col gap-3 rounded-xl overflow-hidden bg-background/30 backdrop-blur-2xl backdrop-saturate-150 p-4 shadow-2xl border border-white/20 dark:border-white/10"
-              style={{
-                position: "fixed",
-                left: springX,
-                top: springY,
-                zIndex: 9999,
-                pointerEvents: "none",
-              }}
-            >
-              <SocialPreviewCard platform={platform} username={username} data={data} loading={loading} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  }
-
-  return content;
-}
+const focusAreas = [
+  "Scalable backend systems",
+  "Async workflows and pipelines",
+  "Real-time products and streaming",
+  "Developer tools and platform engineering",
+  "Performance, reliability, and isolation",
+];
 
 const WaveEmoji = () => {
   const [phase, setPhase] = useState("idle");
@@ -254,99 +80,148 @@ const WaveEmoji = () => {
   );
 };
 
-const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
-  const [socialData, setSocialData] = useState(null);
-  const [socialsLoading, setSocialsLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-    fetch("/api/socials")
-      .then((res) => res.json())
-      .then((data) => {
-        if (mounted && !data.error) {
-          setSocialData(data);
-        }
-        if (mounted) setSocialsLoading(false);
-      })
-      .catch(() => {
-        if (mounted) setSocialsLoading(false);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
+const Hero = () => {
   return (
     <div className="mx-auto flex flex-col gap-10 md:max-w-4xl">
       <motion.div className="flex flex-col gap-6" {...fadeUp(0)}>
-        <div className={GeistPixelSquare.className}>
+        <div>
           <p className="mb-3 font-doto text-xs text-muted-foreground md:text-sm">
-            Hola I&apos;m <WaveEmoji />
+            Hello, I&apos;m <WaveEmoji />
           </p>
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <h1 className="text-2xl font-bold uppercase tracking-tight md:text-4xl">
-              Shivam Verma
+              Shivam Kumar Verma
             </h1>
           </div>
 
           <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground md:text-sm">
-            I build distributed systems, async pipelines, and scalable backend applications
+            Software Engineer · Full-Stack, Backend Heavy
           </p>
         </div>
-
-
       </motion.div>
 
       <div className="space-y-8">
-        <motion.div {...fadeUp(0.15)}>
+        <motion.div {...fadeUp(0.1)}>
+          <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
+            Hero / Intro
+          </h5>
+          <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
+            I am a software engineer with strong backend depth and full-stack
+            execution ability. I build scalable systems, async workflows,
+            developer tools, and real-time products with a clear focus on
+            performance, reliability, isolation, automation, and practical
+            product engineering.
+          </p>
+          <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
+            My strongest work sits at the intersection of backend architecture,
+            real-time systems, automation, infrastructure, and applied AI
+            workflows. I enjoy taking technically difficult problems such as
+            sandboxed execution, message-driven systems, distributed
+            coordination, runtime isolation, and background processing, then
+            turning them into usable products.
+          </p>
+        </motion.div>
+
+        <motion.div {...fadeUp(0.2)}>
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             About Me
           </h5>
           <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            I&apos;m Shivam, a final-year CSE student at <strong className="font-semibold text-foreground">IIIT Nagpur</strong>. I specialize in backend engineering and building scalable distributed systems. My technical journey involves working deeply with <strong className="font-semibold text-foreground">TypeScript, Node.js, and AWS</strong>, creating production-ready async pipelines and AI-powered platforms. Over the past few years, I&apos;ve spent my time architecting robust solutions like <strong className="font-semibold text-foreground"><a href="https://github.com/shivamxverma/CodeSM" target="_blank" className="underline">CodeSM</a></strong>, a secure remote code execution engine powered by <strong className="font-semibold text-foreground">BullMQ, Redis, and isolated Docker sandboxes</strong> handling concurrent multi-language submissions at scale.
+            I am a backend-heavy full-stack engineer and a B.Tech student in
+            Computer Science and Engineering at{" "}
+            <strong className="font-semibold text-foreground">IIIT Nagpur</strong>,
+            graduating in{" "}
+            <strong className="font-semibold text-foreground">May 2026</strong>.
+            I am especially interested in system design, distributed systems,
+            platform engineering, and applied AI. I am comfortable designing
+            APIs, queues, orchestration layers, and real-time infrastructure
+            when product quality depends on getting the backend architecture
+            right.
           </p>
           <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            Beyond my projects like <strong className="font-semibold text-foreground"><a href="https://github.com/shivamxverma/Storix" target="_blank" className="underline">Storix</a></strong> and <strong className="font-semibold text-foreground"><a href="https://github.com/shivamxverma/Chatterly" target="_blank" className="underline">Chatterly</a></strong>, where I focused on async task processing and horizontally scalable real-time messaging, I also have a strong foundation in algorithmic problem solving. I am an avid competitive programmer, ranking in the <strong className="font-semibold text-foreground">top 5% globally on LeetCode</strong> with an 1800+ rating, and holding a <strong className="font-semibold text-foreground">3-star rating on CodeChef</strong>. I am currently looking for backend or full-stack engineering roles where I can continue tackling complex architectural challenges.
+            I care more about solving real product bottlenecks than listing
+            technologies. That usually means reducing latency, simplifying data
+            models, moving heavy work out of the request path, or creating
+            cleaner boundaries around execution and coordination. Across the
+            systems I build, I have a strong bias toward reliability,
+            maintainability, architecture clarity, and scale.
           </p>
         </motion.div>
 
-        <motion.div {...fadeUp(0.25)}>
+        <motion.div {...fadeUp(0.3)}>
           <p className="mb-3 text-xs text-muted-foreground md:text-sm">
-            My{" "}
-            <span className="font-semibold text-foreground">social links</span>{" "}
-            if you wish to connect with me
+            Links
           </p>
           <div className="flex flex-wrap gap-2 p-1">
-            {socialLinks.map(({ label, href, icon, external, platform, username }) => (
-              <SocialButton
-                key={label}
-                label={label}
-                href={href}
-                icon={icon}
-                external={external}
-                platform={platform}
-                username={username}
-                data={socialData?.[platform]}
-                loading={socialsLoading}
-              />
+            {socialLinks.map(({ label, href, icon }) => (
+              <Link key={label} href={href} target="_blank" rel="noopener noreferrer">
+                <CornerBrackets>
+                  <Button size="sm" variant="noShadow">
+                    {icon}
+                    <span className="ml-1.5">{label}</span>
+                  </Button>
+                </CornerBrackets>
+              </Link>
             ))}
           </div>
         </motion.div>
 
-        <motion.div {...fadeUp(0.35)}>
-          <GitHubContributionGraph
-            data={contributionData}
-            lifetimeTotal={lifetimeTotal}
-          />
+        <motion.div {...fadeUp(0.4)}>
+          <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
+            Core Positioning
+          </h5>
+          <ul className="grid gap-3 md:grid-cols-2">
+            {focusAreas.map((item) => (
+              <li
+                key={item}
+                className="border border-black/[0.06] bg-black/[0.02] p-3 font-space-mono text-xs leading-relaxed text-muted-foreground dark:border-white/[0.06] dark:bg-white/[0.03] md:text-sm"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </motion.div>
 
-        <motion.div {...fadeUp(0.45)}>
+        <motion.div {...fadeUp(0.5)}>
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
-            Notable achievements
+            What I&apos;m Currently Building
+          </h5>
+          <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
+            {currentBuilding.summary}
+          </p>
+          <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
+            The core idea is straightforward: founders do not buy skills; they
+            buy solutions to bottlenecks. I am using this repository to
+            structure my experience, project evidence, startup analysis
+            frameworks, and prompting workflows so an outreach system can infer
+            likely engineering problems and connect them to relevant technical
+            work.
+          </p>
+        </motion.div>
+
+        <motion.div {...fadeUp(0.6)}>
+          <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
+            Engineering Strengths
+          </h5>
+          <div className="flex flex-wrap gap-2">
+            {engineeringStrengths.map((item) => (
+              <span
+                key={item}
+                className="border border-black/[0.06] bg-black/[0.02] px-3 py-2 font-space-mono text-[11px] text-muted-foreground dark:border-white/[0.06] dark:bg-white/[0.03] md:text-xs"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div {...fadeUp(0.7)}>
+          <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
+            Notable Achievements
           </h5>
           <ul className="space-y-6">
-            {notableAchievements.map(({ title, body, link, linkLabel }) => (
+            {notableAchievements.map(({ title, body }) => (
               <li
                 key={title}
                 className="border-l-2 border-muted-foreground/25 pl-4"
@@ -357,15 +232,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                 <span className="font-space-mono text-sm leading-relaxed text-muted-foreground md:text-base">
                   {Array.isArray(body)
                     ? body.map((seg, i) =>
-                        seg.href ? (
-                          <Link
-                            key={i}
-                            href={seg.href}
-                            className="font-semibold text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
-                          >
-                            {seg.text}
-                          </Link>
-                        ) : seg.bold ? (
+                        seg.bold ? (
                           <strong key={i} className="font-semibold text-foreground">
                             {seg.text}
                           </strong>
@@ -375,22 +242,11 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                       )
                     : body}
                 </span>
-                {link && (
-                  <Link
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-1 text-sm text-foreground/70 underline underline-offset-2 transition-colors hover:text-foreground md:text-base"
-                  >
-                    {linkLabel}
-                  </Link>
-                )}
               </li>
             ))}
           </ul>
         </motion.div>
       </div>
-
     </div>
   );
 };

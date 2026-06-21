@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { TaptickitIllustration } from "@/components/illustrations/taptickit-illustration";
 import { Star } from "lucide-react";
 
-
 const projectIllustrations = {
   taptickit: TaptickitIllustration,
 };
@@ -30,6 +29,11 @@ const Projects = ({
   category,
   title,
   description,
+  problem,
+  architecture,
+  decisions = [],
+  whyItMatters,
+  mapsWellTo,
   techstacks,
   status,
   link,
@@ -41,12 +45,18 @@ const Projects = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const Illustration = illustration ? projectIllustrations[illustration] : null;
+  const MotionTag = link ? motion.a : motion.div;
+  const motionProps = link
+    ? {
+        href: link,
+        target: "_blank",
+        rel: "noopener noreferrer",
+      }
+    : {};
 
   return (
-    <motion.a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
+    <MotionTag
+      {...motionProps}
       className="group relative block min-w-0 border border-black/[0.06] bg-black/[0.02] transition-colors hover:bg-black/[0.04] dark:border-white/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -113,45 +123,117 @@ const Projects = ({
                 />
               </>
             ) : (
-<Image
-                  src={preview}
-                  alt={`${title} preview`}
-                  fill
-                  sizes={previewSizes}
-                  loading="eager"
-                  className={`object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
-                />
+              <Image
+                src={preview}
+                alt={`${title} preview`}
+                fill
+                sizes={previewSizes}
+                loading="eager"
+                className={`object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
+              />
             )}
           </div>
         </div>
       )}
 
-      <div className="p-3 md:p-4">
-<div className="mb-2 flex items-center justify-between">
-          <p className="text-[10px] font-medium text-muted-foreground md:text-[11px]">{category}</p>
+      <div className="space-y-4 p-3 md:p-4">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-[10px] font-medium text-muted-foreground md:text-[11px]">
+            {category}
+          </p>
           <div className="flex items-center gap-2">
-        
             {stars !== null && stars !== undefined && (
               <span className={`flex items-center gap-0.5 text-[10px] font-medium text-muted-foreground transition-colors duration-300 md:text-xs ${isHovered ? "text-yellow-500" : ""}`}>
-<Star size={"12px"} className={isHovered ? "fill-yellow-500" : "fill-muted-foreground"} />
+                <Star size={"12px"} className={isHovered ? "fill-yellow-500" : "fill-muted-foreground"} />
                 {stars}
+              </span>
+            )}
+            {status && (
+              <span className="rounded-full bg-black/[0.06] px-2 py-0.5 text-[10px] font-medium text-muted-foreground dark:bg-white/[0.08] md:text-[11px]">
+                {status}
               </span>
             )}
           </div>
         </div>
 
-        <h1 className="mb-1.5 text-sm font-semibold md:text-base">{title}</h1>
-        <p className="mb-3 font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
-          {description}
-        </p>
+        <div>
+          <h1 className="mb-1.5 text-sm font-semibold md:text-base">{title}</h1>
+          <p className="font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
+            {description}
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {problem && (
+            <div>
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:text-[11px]">
+                Problem Solved
+              </p>
+              <p className="font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
+                {problem}
+              </p>
+            </div>
+          )}
+
+          {architecture && (
+            <div>
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:text-[11px]">
+                Architecture and Stack
+              </p>
+              <p className="font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
+                {architecture}
+              </p>
+            </div>
+          )}
+
+          {decisions.length > 0 && (
+            <div>
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:text-[11px]">
+                Key Technical Decisions
+              </p>
+              <ul className="list-disc space-y-1.5 pl-4 marker:text-muted-foreground/40">
+                {decisions.map((decision) => (
+                  <li
+                    key={decision}
+                    className="font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs"
+                  >
+                    {decision}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {whyItMatters && (
+            <div>
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:text-[11px]">
+                Why It Matters
+              </p>
+              <p className="font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
+                {whyItMatters}
+              </p>
+            </div>
+          )}
+
+          {mapsWellTo && (
+            <div>
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:text-[11px]">
+                Maps Well To
+              </p>
+              <p className="font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
+                {mapsWellTo}
+              </p>
+            </div>
+          )}
+        </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {techstacks.map((tech, index) => (
-            <TechBadge key={index} name={tech} />
+          {techstacks.map((tech, itemIndex) => (
+            <TechBadge key={itemIndex} name={tech} />
           ))}
         </div>
       </div>
-    </motion.a>
+    </MotionTag>
   );
 };
 
