@@ -14,89 +14,62 @@ const Content = () => {
   return (
     <Layout
       showHeader
-      title="Current Focus"
-      subtitle="What I am building, learning, and getting better at."
+      title="Focus"
+      subtitle="What I am building and learning right now, and the tools I use."
     >
-      <div className="flex flex-col gap-10">
-        <section className="space-y-4">
-          <h3 className="text-xl font-bold font-doto text-foreground">
-            {currentBuilding.title}
-          </h3>
-          <p className="text-sm text-muted-foreground font-space-mono leading-relaxed">
-            {currentBuilding.summary}
-          </p>
-          <div className="grid gap-3">
+      <section className="detail">
+        <h2 className="section-title" style={{ marginBottom: "0.75rem" }}>
+          {currentBuilding.title}
+        </h2>
+        <div className="prose-block">
+          <p>{currentBuilding.summary}</p>
+          <ul>
             {currentBuilding.body.map((item) => (
-              <div
-                key={item}
-                className="border border-black/[0.06] bg-black/[0.02] p-4 dark:border-white/[0.06] dark:bg-white/[0.03]"
-              >
-                <p className="text-sm text-muted-foreground font-space-mono leading-relaxed">
-                  {item}
-                </p>
-              </div>
+              <li key={item}>{item}</li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </div>
+      </section>
 
-        <section className="space-y-4">
-          <h3 className="text-xl font-bold font-doto text-foreground">
-            What I&apos;m Learning
-          </h3>
-          <div className="grid gap-3 md:grid-cols-2">
+      <section className="detail">
+        <h2 className="section-title" style={{ marginBottom: "0.75rem" }}>
+          What I&apos;m Learning
+        </h2>
+        <div className="prose-block">
+          <ul>
             {learningThemes.map((item) => (
-              <div
-                key={item}
-                className="border border-black/[0.06] bg-black/[0.02] p-4 dark:border-white/[0.06] dark:bg-white/[0.03]"
-              >
-                <p className="text-sm text-muted-foreground font-space-mono leading-relaxed">
-                  {item}
-                </p>
-              </div>
+              <li key={item}>{item}</li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </div>
+      </section>
 
-        <section className="space-y-4">
-          <h3 className="text-xl font-bold font-doto text-foreground">
-            Tech Stack
-          </h3>
-          <div className="grid gap-3">
-            {techStackGroups.map((group) => (
-              <div
-                key={group.title}
-                className="border border-black/[0.06] bg-black/[0.02] p-4 dark:border-white/[0.06] dark:bg-white/[0.03]"
-              >
-                <h4 className="text-sm font-semibold text-foreground md:text-base">
-                  {group.title}
-                </h4>
-                <p className="mt-2 text-sm text-muted-foreground font-space-mono leading-relaxed">
-                  {group.description}
-                </p>
-                <p className="mt-3 text-sm text-muted-foreground font-space-mono leading-relaxed">
-                  {group.items.join(" · ")}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+      <section className="detail">
+        <h2 className="section-title" style={{ marginBottom: "1rem" }}>
+          Tech Stack
+        </h2>
+        <dl className="skills-table">
+          {techStackGroups.map((group) => (
+            <div key={group.title} className="contents">
+              <dt>{group.title}</dt>
+              <dd className="muted">{group.items.join(", ")}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
-        <section className="space-y-4">
-          <h3 className="text-xl font-bold font-doto text-foreground">
-            Personal Edge / Engineering Strengths
-          </h3>
-          <div className="flex flex-wrap gap-2">
+      <section className="detail">
+        <h2 className="section-title" style={{ marginBottom: "0.75rem" }}>
+          Strengths
+        </h2>
+        <div className="prose-block">
+          <ul>
             {engineeringStrengths.map((item) => (
-              <span
-                key={item}
-                className="border border-black/[0.06] bg-black/[0.02] px-3 py-2 text-xs text-muted-foreground font-space-mono dark:border-white/[0.06] dark:bg-white/[0.03] md:text-sm"
-              >
-                {item}
-              </span>
+              <li key={item}>{item}</li>
             ))}
-          </div>
-        </section>
-      </div>
+          </ul>
+        </div>
+      </section>
     </Layout>
   );
 };
