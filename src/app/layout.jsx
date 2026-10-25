@@ -1,12 +1,23 @@
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
-import NavigationBar from "@/components/sections/navigation";
-import Footer from "@/components/sections/footer";
-import TopLoader from "@/components/top-loader";
-import OnekoCat from "@/components/OnekoCat";
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+import { Assistant, Lora } from "next/font/google";
+import Navbar from "@/components/site/navbar";
+import SiteFooter from "@/components/site/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ScrollToTopButton } from "@/components/scroll-to-top";
+
+const assistant = Assistant({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-assistant",
+  display: "swap",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-lora",
+  display: "swap",
+});
 
 export const metadata = {
   title: {
@@ -14,7 +25,7 @@ export const metadata = {
     default: "Shivam Kumar Verma - Software Engineer",
   },
   description:
-    "Software engineer with strong backend depth and full-stack execution ability, focused on scalable systems, async workflows, real-time products, and developer tools.",
+    "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
   keywords: [
     "Shivam Kumar Verma",
     "Software Engineer",
@@ -41,16 +52,13 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    shortcut: "/favicon.ico",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.shivamworks.dev/",
     title: "Shivam Kumar Verma - Software Engineer",
     description:
-      "Backend-heavy full-stack engineer building scalable systems, async workflows, real-time products, and developer-focused tools.",
+      "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
     siteName: "Shivam Kumar Verma Portfolio",
     images: [
       {
@@ -65,30 +73,13 @@ export const metadata = {
     card: "summary_large_image",
     title: "Shivam Kumar Verma - Software Engineer",
     description:
-      "Backend-heavy full-stack engineer building scalable systems, async workflows, real-time products, and developer-focused tools.",
+      "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
     images: ["https://www.shivamworks.dev/opengraph.png"],
   },
   alternates: {
     canonical: "https://www.shivamworks.dev/",
   },
 };
-
-import { GeistPixelSquare } from "geist/font/pixel";
-import { Space_Mono, Press_Start_2P } from "next/font/google";
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
-  display: "swap",
-});
-
-const pressStart = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-press-start",
-  display: "swap",
-});
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -97,12 +88,13 @@ export default function RootLayout({ children }) {
     name: "Shivam Kumar Verma",
     jobTitle: "Software Engineer",
     description:
-      "Backend-heavy full-stack engineer building scalable systems, async workflows, real-time products, and developer tools.",
+      "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
     url: "https://www.shivamworks.dev/",
     sameAs: [
       "https://www.shivamworks.dev/",
       "https://github.com/shivamxverma",
       "https://www.linkedin.com/in/shivamv99/",
+      "https://x.com/Shivam_v99",
     ],
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -111,20 +103,8 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${spaceMono.variable} ${pressStart.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${assistant.variable} ${lora.variable}`}>
       <head>
-        <meta name="theme-color" content="#0B0D0E" />
-        <meta name="color-scheme" content="dark light" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -133,25 +113,18 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
-          <TopLoader />
-          <SmoothScrollProvider>
-            <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
-              <main
-                className={`${GeistPixelSquare.className} max-w-[1800px] px-6 pt-14 md:mx-auto md:px-0 md:pt-24`}
-              >
-                <OnekoCat />
-                {children}
-              </main>
-              <Footer />
-              <NavigationBar />
-              <Toaster />
-              <ScrollToTopButton />
-            </div>
-          </SmoothScrollProvider>
+          <a href="#content" className="skip-link">
+            Skip to content
+          </a>
+          <Navbar />
+          <main id="content" className="site-main">
+            {children}
+          </main>
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

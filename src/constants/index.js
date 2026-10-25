@@ -1,278 +1,273 @@
 export const navLinks = [
-  {
-    path: "/",
-    name: "About",
-  },
-  {
-    path: "/projects",
-    name: "Projects",
-  },
-  {
-    path: "/content",
-    name: "Focus",
-  },
-  {
-    path: "/experience",
-    name: "Experience",
-  },
+  { path: "/projects", name: "Projects" },
+  { path: "/experience", name: "Experience" },
+  { path: "/content", name: "Focus" },
+];
+
+export const profile = {
+  name: "Shivam Kumar Verma",
+  shortName: "Shivam Verma",
+  email: "shivam0xverma@gmail.com",
+  resume:
+    "https://drive.google.com/file/d/16d5YHOrGaU7fEV-F1JWMutj1Sdb38ObC/view?usp=sharing",
+  education: "B.Tech in Computer Science, IIIT Nagpur (2022–2026)",
+};
+
+export const socials = [
+  { label: "GitHub", href: "https://github.com/shivamxverma" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/shivamv99/" },
+  { label: "Twitter", href: "https://x.com/Shivam_v99" },
+  { label: "LeetCode", href: "https://leetcode.com/u/MahavirCoder/" },
+  { label: "CodeChef", href: "https://www.codechef.com/users/mahavir99" },
 ];
 
 export const notableAchievements = [
   {
     title: "Competitive Programming",
     body: [
-      { text: "Ranked in the " },
-      { text: "top 5% globally on LeetCode", bold: true },
-      { text: " with an " },
-      { text: "1800+ rating", bold: true },
-      { text: ". Also reached " },
+      { text: "Top 5% globally on LeetCode", bold: true },
+      { text: " (1800+ rating, 800+ problems). " },
       { text: "3-star on CodeChef", bold: true },
-      { text: " with a " },
-      { text: "1700+ rating", bold: true },
-      { text: ", became a " },
-      { text: "Pupil on Codeforces", bold: true },
-      { text: " with a max rating of " },
-      { text: "1261", bold: true },
-      { text: ", and is " },
-      { text: "rated on AtCoder", bold: true },
-      { text: " at " },
-      { text: "440+", bold: true },
-      { text: ". I treat these as evidence of analytical problem solving, algorithmic depth, and comfort reasoning through difficult technical constraints." },
+      { text: " (1700+). Pupil on Codeforces (max 1261)." },
+    ],
+  },
+  {
+    title: "Hackathons",
+    body: [
+      { text: "3rd place", bold: true },
+      { text: " at Tantrafiesta 2024, IIIT Nagpur." },
     ],
   },
 ];
 
 export const intros = [
   "Software Engineer",
-  "Backend-Heavy Full-Stack Engineer",
-  "Distributed Systems Builder",
-  "Async Systems Engineer",
-  "Developer Tools Builder",
+  "Backend Engineer",
+  "Full-Stack Engineer",
 ];
 
+// Shown oldest first in this array; the experience page reverses it.
 export const experiences = [
   {
-    role: "Software Developer Intern",
-    year: "Nov 2025 - Current",
+    role: "Full Stack Developer Intern",
+    year: "Nov 2025 – May 2026",
     company: "klimb.io",
     type: "Internship",
     location: "Remote",
     logo: "/klimbio_logo.jpeg",
     responsibility: [
       [
-        { text: "Engineered a " },
-        { text: "PostgreSQL-backed credit-based monetization system", bold: true },
-        { text: " to replace simple AI feature flags with usage-aware access control, and designed middleware that tracked and enforced credit limits across " },
+        { text: "Replaced on/off feature flags with a " },
+        { text: "PostgreSQL credit ledger", bold: true },
+        { text: " that tracks each customer's usage of " },
         { text: "6+ AI features", bold: true },
-        { text: " so the product could support usage-based billing and subscription add-ons." },
+        { text: ", so the product could charge by usage." },
       ],
       [
-        { text: "Redesigned the product’s field model around a " },
-        { text: "shared global template architecture", bold: true },
-        { text: " after duplicated per-tenant definitions caused database bloat and management complexity, reducing duplicate records and making field management cleaner across customers." },
+        { text: "Rewrote slow queries and restructured how the " },
+        { text: "recruiter dashboard", bold: true },
+        { text: " loads data, so it stays fast under concurrent load." },
+      ],
+    ],
+    techstacks: ["TypeScript", "React", "Node.js", "Express.js", "PostgreSQL", "Prisma", "Redis", "AWS S3", "AWS EC2"],
+  },
+  {
+    role: "Fullstack Developer Intern",
+    year: "Jul 2026 – present",
+    company: "poiro.com",
+    type: "Internship",
+    location: "Remote",
+    responsibility: [
+      [
+        { text: "Built the " },
+        { text: "node and group system", bold: true },
+        { text: " for an AI workflow builder: steps pass typed outputs to each other, and groups run as reusable sub-workflows." },
       ],
       [
-        { text: "Improved recruiter dashboard performance by replacing expensive request-time aggregations with " },
-        { text: "precomputed and indexed data", bold: true },
-        { text: ", moving heavy computation out of the hot path and improving load time without increasing product complexity." },
+        { text: "Designed the data models and backend for a " },
+        { text: "shared asset service used by 3 apps", bold: true },
+        { text: ", migrated existing assets into it, and added folders, prompt Elements and duplicate-image blocking." },
+      ],
+      [
+        { text: "Replaced one query per folder level with a single " },
+        { text: "MongoDB $graphLookup", bold: true },
+        { text: ", and cut folder edits from 3 database round-trips to 1." },
+      ],
+      [
+        { text: "Put Pixabay, Unsplash and Pinterest behind " },
+        { text: "one adapter interface", bold: true },
+        { text: ", with per-org Redis caching and spend caps (500 calls per org per day) to stop runaway costs." },
+      ],
+      [
+        { text: "Cleared " },
+        { text: "1,041 lint findings", bold: true },
+        { text: " across 7 Python packages and made lint blocking in CI; deleted " },
+        { text: "13,769 lines", bold: true },
+        { text: " of dead TypeScript." },
       ],
     ],
-    techstacks: [
-      "TypeScript",
-      "React",
-      "Node.js",
-      "Express.js",
-      "PostgreSQL",
-      "Redis",
-      "AWS S3",
-      "AWS EC2",
-    ],
+    techstacks: ["Python", "FastAPI", "MongoDB", "Redis", "Celery", "Next.js", "TypeScript", "Cloudflare R2", "Turborepo"],
   },
 ];
 
 export const projects = [
   {
-    title: "Yuvro Web IDE",
-    category: "Platform Engineering · Browser IDE",
+    title: "Yuvro",
+    category: "Cloud IDE, Kubernetes",
     description:
-      "A browser-based online IDE with separate metadata, orchestration, and runtime layers for isolated developer workspaces with terminals, previews, and database tooling.",
+      "A browser IDE like Replit. Each project gets its own container with an editor, terminal, app preview and database browser.",
     problem:
-      "Developers need instant remotely hosted coding environments with file editing, interactive shells, app previews, and database inspection, but the hard part is maintaining isolated workspace state and runtime infrastructure at scale.",
+      "Running user code needs isolation. Every project needs its own runtime, files and terminal without touching the main servers.",
     architecture:
-      "Frontend in React, TypeScript, and Vite; an init service in FastAPI with PostgreSQL and S3-backed content-addressed storage; a FastAPI orchestrator on Kubernetes; and a per-workspace runtime agent exposing PTY sockets, file APIs, and port proxying.",
+      "React client, a FastAPI service for auth and metadata, a FastAPI orchestrator that starts per-project Kubernetes deployments, and a small runner inside each workspace.",
     decisions: [
-      "Split the system into frontend, init service, orchestrator, and runner so identity, metadata, and execution concerns remain decoupled.",
-      "Used content-addressed storage with SHA-256 hashing and S3-backed blob storage to reduce duplication.",
-      "Modeled file explorer metadata with a normalized self-referential nodes table and indexes for fast lookups.",
-      "Provisioned isolated Kubernetes resources and project-specific databases per workspace.",
-      "Kept the runtime agent thin so shell, file I/O, and proxying happen inside the workspace boundary.",
+      "Files are stored once by their SHA-256 hash in S3, so identical files are never duplicated. A scheduled job deletes unused ones.",
+      "The runner streams the terminal over WebSockets, serves file APIs and proxies app ports.",
+      "The file tree is one self-referencing Postgres table with indexes for fast lookups.",
     ],
-    whyItMatters:
-      "This project reflects platform engineering, runtime isolation, workspace orchestration, control-plane design, browser-based developer tooling, and real-time terminal streaming.",
-    mapsWellTo:
-      "Developer platforms, cloud IDEs, internal tooling teams, and products built around managed execution environments.",
-    techstacks: ["React", "TypeScript", "Vite", "FastAPI", "PostgreSQL", "AWS S3", "Kubernetes", "PTY streaming"],
+    techstacks: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Kubernetes", "AWS S3", "WebSockets"],
+    github: "shivamxverma/yuvro",
+    link: "https://github.com/shivamxverma/yuvro",
     status: "active",
   },
   {
     title: "CodeSM",
-    category: "Sandboxing · Async Infrastructure",
+    category: "Sandboxed Code Execution",
     description:
-      "A scalable sandboxed code execution engine that safely compiles and runs untrusted code across multiple languages.",
+      "A coding platform that safely runs untrusted code in C, C++, Java, Go, Python and JavaScript.",
     problem:
-      "Executing user-submitted code safely is difficult because it can be malicious, resource-intensive, or unstable. The system needs to run code asynchronously, evaluate test cases, and return results without compromising the host system.",
+      "User code can be malicious or loop forever. It has to run safely, and grading must not block the API.",
     architecture:
-      "React frontend with a Node.js and Express.js backend, PostgreSQL and Redis for state and coordination, BullMQ for execution jobs, and Docker on AWS EC2 for sandboxed runners.",
+      "Express API stores the submission and puts it on a BullMQ queue. Workers run the code in Docker and save results to PostgreSQL.",
     decisions: [
-      "Used Docker-based isolation for secure execution environments.",
-      "Applied resource limits, filesystem isolation, disabled networking, and restricted process capabilities.",
-      "Reused persistent containers instead of creating a fresh container per execution to reduce overhead.",
-      "Implemented early-exit evaluation to stop grading after the first failed test case and free worker resources faster.",
-      "Built an async queue-based execution pipeline with BullMQ, Redis, and PostgreSQL.",
-      "Supported C++, Java, Python, JavaScript, and Go.",
+      "Each run has no network, a read-only filesystem, dropped capabilities, and limits on memory (256 MB), processes (32), CPU and time.",
+      "One container is reused across a submission's test cases, then destroyed.",
+      "Grading stops at the first failed test case.",
+      "Gemini gives step-by-step hints for each problem.",
     ],
-    whyItMatters:
-      "This project shows depth in security, sandboxing, job processing, performance optimization, infrastructure design, and high-throughput backend systems.",
-    mapsWellTo:
-      "Online judges, AI agents with tool execution, developer infrastructure, education products, and secure compute platforms.",
-    techstacks: ["React", "Node.js", "Express.js", "PostgreSQL", "Redis", "BullMQ", "Docker", "AWS EC2"],
-    status: "active",
+    techstacks: ["Node.js", "Express.js", "TypeScript", "BullMQ", "Redis", "PostgreSQL", "Docker", "AWS EC2"],
+    github: "shivamxverma/CodeSM",
+    link: "https://code-sm.vercel.app/",
+    status: "live",
     preview: "/projects/Codesm-white.png",
     previewDark: "/projects/Codesm-black.png",
   },
   {
-    title: "Storix",
-    category: "Async Pipelines · Real-Time Status",
+    title: "DeepDoc",
+    category: "RAG, LLM Evaluation",
     description:
-      "A real-time asynchronous document ingestion and processing pipeline.",
+      "Ask questions about your PDFs and get answers grounded in the document.",
     problem:
-      "Heavy PDF extraction should not block the request lifecycle or cause server timeouts, but users still need live progress visibility across the processing flow.",
+      "Simple RAG loses context: chunks cut sections in half, and follow-up questions retrieve the wrong parts.",
     architecture:
-      "Next.js and TypeScript on the frontend, FastAPI on the backend, Celery for task execution, PostgreSQL and Redis for persistence and coordination, and AWS S3 for document storage.",
+      "Next.js app with Azure OpenAI for answers and embeddings, Pinecone for vector search, and PostgreSQL for chat history.",
     decisions: [
-      "Chose FastAPI and Celery for structured APIs and reliable background processing.",
-      "Used Redis Pub/Sub and WebSockets to bridge worker-side task events to the frontend.",
-      "Moved document extraction fully outside the request lifecycle.",
-      "Designed the UX so users can track parse, extract, and save stages in real time.",
+      "Chunks follow the document's sections, so headings and bullets stay together.",
+      "Follow-up questions are rewritten into standalone questions using chat history.",
+      "A 36-case test set compares retrieval settings and prompts. Tuned across 100+ configurations.",
     ],
-    whyItMatters:
-      "This project demonstrates async processing, data pipelines, background jobs, real-time status streaming, and practical architecture for document-heavy products.",
-    mapsWellTo:
-      "Document-heavy SaaS, workflow automation tools, ingestion systems, and applied AI pipelines.",
-    techstacks: ["Next.js", "TypeScript", "FastAPI", "Celery", "PostgreSQL", "Redis", "AWS S3", "WebSockets"],
+    techstacks: ["Next.js", "TypeScript", "Azure OpenAI", "Pinecone", "PostgreSQL", "Drizzle"],
+    github: "shivamxverma/DeepDoc",
+    link: "https://github.com/shivamxverma/DeepDoc",
     status: "active",
+    preview: "/projects/DeepDoc.png",
+    previewDark: "/projects/DeepDoc.png",
+  },
+  {
+    title: "Hireflow",
+    category: "AI Automation, Job Pipelines",
+    description:
+      "Finds job listings, tailors resume bullets to each one, and applies automatically. I used it for my own job search.",
+    problem:
+      "Applying to many roles by hand is slow, and AI rewrites can invent skills you do not have.",
+    architecture:
+      "Collection, AI processing and browser automation run as separate BullMQ queues, so a block in one stage does not stall the others.",
+    decisions: [
+      "Pulls listings from LinkedIn, Wellfound, YC Work at a Startup and Telegram.",
+      "A validator rejects any rewritten bullet that mentions a skill not in my real profile.",
+      "Duplicate listings across sources are removed by hashing title, company and description.",
+    ],
+    techstacks: ["Node.js", "TypeScript", "BullMQ", "Redis", "PostgreSQL", "Playwright", "Gemini"],
+    github: "shivamxverma/hireflow",
+    link: "https://github.com/shivamxverma/hireflow",
+    status: "active",
+  },
+  {
+    title: "Storix",
+    category: "Async Pipelines, Live Status",
+    description:
+      "Upload a PDF and watch each processing stage happen live.",
+    problem:
+      "Heavy PDF extraction inside a request causes timeouts, and users wait without knowing what is happening.",
+    architecture:
+      "FastAPI takes the upload, Celery workers do the extraction, and Redis Pub/Sub sends progress to the Next.js client over WebSockets.",
+    decisions: [
+      "All extraction runs outside the request.",
+      "Users see parse, extract and save stages as they happen.",
+    ],
+    techstacks: ["Next.js", "TypeScript", "FastAPI", "Celery", "PostgreSQL", "Redis", "AWS S3", "WebSockets"],
+    github: "shivamxverma/Storix",
+    link: "https://async-doc.vercel.app",
+    status: "live",
     preview: "/projects/Storix.png",
     previewDark: "/projects/Storix.png",
   },
   {
     title: "Chatterly",
-    category: "Real-Time Systems · Event-Driven Messaging",
+    category: "Real-Time Chat, Kafka",
     description:
-      "A scalable real-time chat architecture built for high-throughput messaging.",
+      "A real-time chat app built to handle many messages at once.",
     problem:
-      "Directly writing chat messages to the database under high concurrency creates a bottleneck and can crash the system, so ingestion and persistence have to be decoupled.",
+      "Writing every message straight to the database becomes a bottleneck under heavy traffic.",
     architecture:
-      "Next.js and TypeScript on the frontend, Node.js with Socket.io on the backend, Apache Kafka for message brokering, Redis for synchronization, and PostgreSQL with Prisma ORM for persistence.",
+      "Socket.io servers publish messages to Kafka. Workers batch-write them to PostgreSQL, and Redis Pub/Sub shares events across servers.",
     decisions: [
-      "Used Kafka to decouple message ingestion from persistence.",
-      "Used Redis Pub/Sub to synchronize WebSocket events across multiple server instances.",
-      "Designed the system around durable persistence plus fast live delivery.",
-      "Considered event ordering and delivery guarantees through Kafka offsets.",
+      "Kafka separates receiving messages from saving them.",
+      "Users connected to different servers can still share a room.",
     ],
-    whyItMatters:
-      "This project shows experience with event-driven systems, streaming architecture, real-time applications, and scalable WebSocket infrastructure.",
-    mapsWellTo:
-      "Chat, collaboration, customer messaging, live support, and streaming products.",
     techstacks: ["Next.js", "TypeScript", "Node.js", "Socket.io", "Apache Kafka", "Redis", "PostgreSQL", "Prisma"],
+    github: "shivamxverma/chatterly",
+    link: "https://github.com/shivamxverma/chatterly",
     status: "active",
     preview: "/projects/chatterly.png",
     previewDark: "/projects/chatterly.png",
   },
   {
     title: "Collab-Draw",
-    category: "Collaborative UX · State Synchronization",
+    category: "Real-Time Collaboration",
     description:
-      "A real-time collaborative whiteboard and drawing platform.",
-    problem:
-      "Synchronizing drawing state like paths, coordinates, and shapes across multiple clients with low latency is difficult when updates are frequent and conflicts must stay minimal.",
+      "A shared whiteboard where several people draw on the same canvas live.",
     architecture:
-      "Next.js 14, TypeScript, Canvas API, and Tailwind CSS on the frontend; a Node.js REST API plus a separate Node.js WebSocket server on the backend; PostgreSQL with Prisma; and a Turborepo monorepo managed with pnpm.",
+      "Next.js and Canvas on the frontend, a REST API and a separate WebSocket server, PostgreSQL with Prisma, in a Turborepo monorepo.",
     decisions: [
-      "Separated the HTTP backend and WebSocket backend so they can scale independently.",
-      "Used a Turborepo monorepo to share database schemas, UI pieces, and common utilities.",
-      "Managed normalized drawing state and live canvas synchronization.",
-      "Focused on efficiently broadcasting high-frequency coordinate updates.",
+      "HTTP and WebSocket servers are separate, so they scale on their own.",
+      "Shared database schema and UI code live in one monorepo.",
     ],
-    whyItMatters:
-      "This project highlights collaborative UX, real-time synchronization, WebSocket systems, and modular backend separation.",
-    mapsWellTo:
-      "Collaborative design tools, whiteboards, multiplayer interfaces, and browser-native real-time products.",
-    techstacks: ["Next.js", "TypeScript", "Canvas API", "Tailwind CSS", "Node.js", "WebSockets", "PostgreSQL", "Prisma"],
-    status: "active",
-  },
-  {
-    title: "Raft-KV",
-    category: "Distributed Systems · Consensus",
-    description:
-      "A distributed key-value store built in Go using the Raft consensus algorithm.",
-    problem:
-      "Distributed systems need to stay consistent and available even when nodes fail or network partitions happen.",
-    architecture:
-      "Go implementation of a key-value store with Raft handling leader election, heartbeat coordination, replicated logs, and state machine replication.",
-    decisions: [
-      "Implemented Raft from scratch to understand leader election, heartbeat handling, distributed logs, and state machine replication.",
-      "Used Go concurrency primitives for replication and coordination logic.",
-      "Focused on correctness under non-deterministic network behavior.",
-      "Worked through strict consistency and fault tolerance tradeoffs.",
-    ],
-    whyItMatters:
-      "This project reflects strong systems thinking, distributed systems fundamentals, high-availability design, and interest in infrastructure internals.",
-    mapsWellTo:
-      "Infrastructure teams, databases, storage engines, control planes, and distributed systems roles.",
-    techstacks: ["Go", "Distributed systems", "Raft consensus", "Fault tolerance", "State machines"],
+    techstacks: ["Next.js", "TypeScript", "Canvas API", "Node.js", "WebSockets", "PostgreSQL", "Prisma"],
     status: "active",
   },
   {
     title: "WebVox",
-    category: "Peer-to-Peer Communication · WebRTC",
+    category: "Video Calls, WebRTC",
     description:
-      "A peer-to-peer video chat application using WebRTC and Node.js signaling.",
-    problem:
-      "Real-time video and audio communication should happen directly between browsers to reduce latency and server bandwidth usage.",
-    architecture:
-      "HTML, JavaScript, and EJS on the frontend, Node.js and Express.js on the backend, WebRTC for media transport, and WebSockets for signaling.",
+      "Peer-to-peer video calls in the browser, with a Node.js signaling server.",
     decisions: [
-      "Used WebRTC to establish direct browser-to-browser media connections.",
-      "Built a custom signaling server for SDP offers, answers, and ICE candidate exchange.",
-      "Structured the application around room-based coordination.",
+      "Video and audio go directly between browsers over WebRTC.",
+      "A WebSocket server exchanges the connection details and manages rooms.",
     ],
-    whyItMatters:
-      "This project shows understanding of low-latency communication, peer-to-peer networking, browser media systems, and signaling infrastructure.",
-    mapsWellTo:
-      "Communication products, telepresence apps, collaboration tools, and browser media systems.",
-    techstacks: ["HTML", "JavaScript", "EJS", "Node.js", "Express.js", "WebRTC", "WebSockets"],
+    techstacks: ["JavaScript", "Node.js", "Express.js", "WebRTC", "WebSockets"],
     status: "active",
   },
   {
     title: "Courseq",
-    category: "Transactional Backends · RBAC",
+    category: "Backend API, Payments",
     description:
-      "A backend API for a digital course marketplace with secure transactions and role-based flows.",
-    problem:
-      "A course marketplace must handle multi-role authorization and transaction state changes safely without race conditions or duplicate purchases.",
-    architecture:
-      "Node.js, Express, and TypeScript on the backend with PostgreSQL for transactional state management.",
+      "Backend for a course marketplace with user, creator and admin roles.",
     decisions: [
-      "Designed clear RBAC boundaries between user, creator, and admin roles.",
-      "Modeled the purchase lifecycle with explicit PENDING, SUCCESS, and FAILED states.",
-      "Used database-level uniqueness constraints to prevent duplicate purchases.",
-      "Focused on transactional integrity and idempotency.",
+      "Purchases move through PENDING, SUCCESS and FAILED states.",
+      "Database constraints block duplicate purchases.",
     ],
-    whyItMatters:
-      "This project shows backend API design, transactional logic, auth models, and e-commerce-style workflow handling.",
-    mapsWellTo:
-      "Marketplaces, SaaS billing flows, commerce products, and backend systems with transactional guarantees.",
-    techstacks: ["Node.js", "Express.js", "TypeScript", "PostgreSQL", "RBAC", "Transactional integrity"],
+    techstacks: ["Node.js", "Express.js", "TypeScript", "PostgreSQL"],
     status: "active",
   },
 ];
@@ -280,82 +275,59 @@ export const projects = [
 export const techStackGroups = [
   {
     title: "Languages",
-    description:
-      "I use these languages across product engineering, backend infrastructure, and systems work.",
-    items: ["TypeScript", "JavaScript", "Go", "Python"],
-  },
-  {
-    title: "Frontend",
-    description:
-      "I use the frontend to expose complex backend behavior cleanly, especially in real-time and developer-facing products.",
-    items: ["React", "Next.js", "Vite", "Tailwind CSS", "Canvas API", "EJS", "HTML"],
+    items: ["TypeScript", "JavaScript", "Python", "C++", "SQL"],
   },
   {
     title: "Backend",
-    description:
-      "My strongest work centers on APIs, orchestration, backend workflows, and real-time infrastructure.",
-    items: ["Node.js", "Express.js", "FastAPI", "WebSocket systems", "Socket.io", "REST API design"],
+    items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "WebSockets", "Socket.io", "WebRTC"],
   },
   {
-    title: "Databases and Storage",
-    description:
-      "Most of my systems rely on relational modeling, coordination layers, and storage patterns built for correctness and speed.",
-    items: ["PostgreSQL", "Redis", "Prisma", "S3-backed content-addressed storage", "AWS S3"],
+    title: "Databases",
+    items: ["PostgreSQL", "MongoDB", "Redis", "Pinecone", "Prisma", "Drizzle"],
   },
   {
-    title: "Async, Messaging, and Real-Time",
-    description:
-      "A recurring theme in my projects is moving heavy work off the request path and keeping progress visible in real time.",
-    items: ["BullMQ", "Celery", "Redis Pub/Sub", "Apache Kafka", "WebSockets", "PTY streaming", "Event-driven backend patterns"],
+    title: "Queues and Streaming",
+    items: ["BullMQ", "Celery", "Apache Kafka", "Redis Pub/Sub"],
   },
   {
-    title: "Infrastructure, DevOps, and Platform",
-    description:
-      "I am especially interested in the layer where runtime safety, orchestration, and product behavior meet.",
-    items: ["Docker", "Kubernetes", "AWS EC2", "Runtime isolation", "Workspace orchestration", "Sandboxed execution environments"],
+    title: "Infrastructure",
+    items: ["Docker", "Kubernetes", "AWS (EC2, S3)", "Cloudflare R2", "Linux", "CI/CD"],
   },
   {
-    title: "Systems and CS Foundations",
-    description:
-      "I care about the fundamentals behind reliable systems, not just the frameworks used to expose them.",
-    items: ["Distributed systems", "Raft consensus", "Fault tolerance", "State machines", "Transactional integrity", "RBAC", "Performance optimization", "Indexing and schema design"],
+    title: "AI",
+    items: ["RAG", "Vector search", "LLM evaluation", "Azure OpenAI", "Gemini"],
+  },
+  {
+    title: "Frontend",
+    items: ["React", "Next.js", "Tailwind CSS", "Turborepo"],
   },
 ];
 
 export const currentBuilding = {
-  title: "What I'm Currently Building",
+  title: "What I'm Building",
   summary:
-    "This repository is a founder-outreach AI knowledge base designed as a single source of truth for an AI outreach agent that maps my engineering experience, projects, and skills directly to startup problems.",
+    "A personal knowledge base that helps me write better cold messages to startup founders.",
   body: [
-    "The core idea is that founders do not buy skills; they buy solutions to bottlenecks.",
-    "The system analyzes a startup, infers likely engineering challenges, matches those challenges to evidence from my past work, and generates highly personalized founder outreach.",
-    "The repository contains profile, experience, skills, interests, achievements, project deep-dives, startup analysis frameworks, outreach guidelines, and prompts for startup analysis, problem matching, and DM writing.",
-    "The workflow is straightforward: analyze the startup, infer the hardest technical bottlenecks, match those bottlenecks to project evidence, and generate a concise outreach message.",
-    "I think of it as a blend of applied AI, knowledge design, structured prompting, and engineering positioning. It treats portfolio content as reusable structured intelligence instead of static resume text and reflects how I like to productize technical knowledge.",
+    "My experience, skills and projects are stored as structured notes.",
+    "Prompts look at a startup, guess its hardest engineering problems, and match them to work I have done.",
+    "The output is a short message: the problem, my proof, and a simple ask.",
   ],
 };
 
 export const learningThemes = [
-  "Building highly scalable automated workflows that can move complex work off the request path without losing clarity or operational control.",
-  "AI and LLM integrations with an emphasis on applied AI systems rather than isolated model demos.",
-  "Backend architecture and system design, especially where product behavior depends on strong infrastructure decisions.",
-  "Developer tools and platform engineering, including runtime isolation, orchestration, and browser-based tooling.",
-  "Distributed systems and execution isolation, both as technical interests and as practical constraints in real products.",
-  "Better ways to connect deep technical work to real business bottlenecks so engineering becomes easier to position, explain, and sell.",
+  "Backend architecture and system design",
+  "Async workflows and background jobs",
+  "Applied AI: RAG and evaluating LLM output",
+  "Developer tools and isolated runtimes",
 ];
 
 export const engineeringStrengths = [
-  "Asynchronous job processing and pipelines",
+  "Background jobs and queues",
   "Sandboxed code execution",
-  "Real-time status streaming",
-  "Complex database modeling and optimization",
-  "Monetization and access control systems",
-  "Workspace orchestration and isolated runtime environments",
-  "Distributed consensus and fault tolerance",
-  "Real-time peer-to-peer communication",
-  "Transactional backend systems",
-  "High-volume data streaming and brokering",
-  "Complex state synchronization",
+  "Live progress over WebSockets",
+  "Database design and query tuning",
+  "Usage-based billing",
+  "RAG pipelines",
 ];
 
 export const hackathons = [];

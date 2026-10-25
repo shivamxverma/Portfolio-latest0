@@ -39,11 +39,10 @@ const socialLinks = [
 ];
 
 const focusAreas = [
-  "Scalable backend systems",
-  "Async workflows and pipelines",
-  "Real-time products and streaming",
-  "Developer tools and platform engineering",
-  "Performance, reliability, and isolation",
+  "Backend systems and APIs",
+  "Background jobs and queues",
+  "Real-time apps",
+  "Applied AI (RAG, LLM workflows)",
 ];
 
 const WaveEmoji = () => {
@@ -104,22 +103,19 @@ const Hero = () => {
       <div className="space-y-8">
         <motion.div {...fadeUp(0.1)}>
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
-            Hero / Intro
+            Intro
           </h5>
           <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            I am a software engineer with strong backend depth and full-stack
-            execution ability. I build scalable systems, async workflows,
-            developer tools, and real-time products with a clear focus on
-            performance, reliability, isolation, automation, and practical
-            product engineering.
+            I am a software engineer who mostly works on the backend. I build
+            APIs, background jobs, real-time features and AI workflows.
           </p>
           <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            My strongest work sits at the intersection of backend architecture,
-            real-time systems, automation, infrastructure, and applied AI
-            workflows. I enjoy taking technically difficult problems such as
-            sandboxed execution, message-driven systems, distributed
-            coordination, runtime isolation, and background processing, then
-            turning them into usable products.
+            Right now I am a Fullstack Developer Intern at{" "}
+            <strong className="font-semibold text-foreground">poiro.com</strong>,
+            working on the asset service and workflow builder behind its AI
+            tools. Before that I interned at{" "}
+            <strong className="font-semibold text-foreground">klimb.io</strong>,
+            where I built usage-based billing for its AI features.
           </p>
         </motion.div>
 
@@ -128,24 +124,18 @@ const Hero = () => {
             About Me
           </h5>
           <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            I am a backend-heavy full-stack engineer and a B.Tech student in
-            Computer Science and Engineering at{" "}
-            <strong className="font-semibold text-foreground">IIIT Nagpur</strong>,
-            graduating in{" "}
+            I finished my B.Tech in Computer Science at{" "}
+            <strong className="font-semibold text-foreground">IIIT Nagpur</strong>{" "}
+            in{" "}
             <strong className="font-semibold text-foreground">May 2026</strong>.
-            I am especially interested in system design, distributed systems,
-            platform engineering, and applied AI. I am comfortable designing
-            APIs, queues, orchestration layers, and real-time infrastructure
-            when product quality depends on getting the backend architecture
-            right.
+            I like problems where the backend decides whether the product
+            works: slow queries, heavy work that should not block a request,
+            and code that must run safely.
           </p>
           <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            I care more about solving real product bottlenecks than listing
-            technologies. That usually means reducing latency, simplifying data
-            models, moving heavy work out of the request path, or creating
-            cleaner boundaries around execution and coordination. Across the
-            systems I build, I have a strong bias toward reliability,
-            maintainability, architecture clarity, and scale.
+            I am looking for a full-time backend or full-stack role, remote or
+            in Bangalore, starting{" "}
+            <strong className="font-semibold text-foreground">23 November 2026</strong>.
           </p>
         </motion.div>
 
@@ -169,7 +159,7 @@ const Hero = () => {
 
         <motion.div {...fadeUp(0.4)}>
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
-            Core Positioning
+            What I Work On
           </h5>
           <ul className="grid gap-3 md:grid-cols-2">
             {focusAreas.map((item) => (
@@ -185,18 +175,10 @@ const Hero = () => {
 
         <motion.div {...fadeUp(0.5)}>
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
-            What I&apos;m Currently Building
+            What I&apos;m Building
           </h5>
           <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
             {currentBuilding.summary}
-          </p>
-          <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            The core idea is straightforward: founders do not buy skills; they
-            buy solutions to bottlenecks. I am using this repository to
-            structure my experience, project evidence, startup analysis
-            frameworks, and prompting workflows so an outreach system can infer
-            likely engineering problems and connect them to relevant technical
-            work.
           </p>
         </motion.div>
 
