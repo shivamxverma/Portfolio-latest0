@@ -25,12 +25,14 @@ export const metadata = {
     default: "Shivam Kumar Verma - Software Engineer",
   },
   description:
-    "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
+    "Software engineer focused on backend systems, async workers, sandboxed code execution and AI workflows.",
   keywords: [
     "Shivam Kumar Verma",
     "Software Engineer",
     "Full Stack Developer",
     "Backend Engineer",
+    "Python",
+    "FastAPI",
     "React",
     "Next.js",
     "Node.js",
@@ -58,7 +60,7 @@ export const metadata = {
     url: "https://www.shivamworks.dev/",
     title: "Shivam Kumar Verma - Software Engineer",
     description:
-      "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
+      "Software engineer focused on backend systems, async workers, sandboxed code execution and AI workflows.",
     siteName: "Shivam Kumar Verma Portfolio",
     images: [
       {
@@ -73,7 +75,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Shivam Kumar Verma - Software Engineer",
     description:
-      "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
+      "Software engineer focused on backend systems, async workers, sandboxed code execution and AI workflows.",
     images: ["https://www.shivamworks.dev/opengraph.png"],
   },
   alternates: {
@@ -88,7 +90,7 @@ export default function RootLayout({ children }) {
     name: "Shivam Kumar Verma",
     jobTitle: "Software Engineer",
     description:
-      "Software engineer focused on backend systems, background jobs, real-time apps and AI workflows.",
+      "Software engineer focused on backend systems, async workers, sandboxed code execution and AI workflows.",
     url: "https://www.shivamworks.dev/",
     sameAs: [
       "https://www.shivamworks.dev/",
