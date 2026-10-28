@@ -8,7 +8,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ShivaBhattacharjee/portfolio-2025.git
+git clone https://github.com/shivamxverma/Portfolio-latest0.git
 cd portfolio-2025
 ```
 
