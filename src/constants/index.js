@@ -26,9 +26,9 @@ export const notableAchievements = [
     title: "Competitive Programming",
     body: [
       { text: "Top 5% globally on LeetCode", bold: true },
-      { text: " (1800+ rating, 800+ problems). " },
+      { text: " (1800+ contest rating, 800+ problems solved). " },
       { text: "3-star on CodeChef", bold: true },
-      { text: " (1700+). Pupil on Codeforces (max 1261)." },
+      { text: " (1700+ rating)." },
     ],
   },
   {
@@ -57,95 +57,56 @@ export const experiences = [
     logo: "/klimbio_logo.jpeg",
     responsibility: [
       [
-        { text: "Replaced on/off feature flags with a " },
-        { text: "PostgreSQL credit ledger", bold: true },
-        { text: " that tracks each customer's usage of " },
+        { text: "Usage-based billing ledger: ", bold: true },
+        { text: "built a credit ledger to replace on/off feature flags. It meters every use of " },
         { text: "6+ AI features", bold: true },
-        { text: ", so the product could charge by usage." },
-      ],
-      [
-        { text: "Rewrote slow queries and restructured how the " },
-        { text: "recruiter dashboard", bold: true },
-        { text: " loads data, so it stays fast under concurrent load." },
+        { text: " per customer and debits it from their balance, which let klimb charge customers by usage." },
       ],
     ],
-    techstacks: ["TypeScript", "React", "Node.js", "Express.js", "PostgreSQL", "Prisma", "Redis", "AWS S3", "AWS EC2"],
+    techstacks: ["TypeScript", "Express.js", "PostgreSQL", "Redis", "AWS"],
   },
   {
-    role: "Fullstack Developer Intern",
+    role: "Full Stack Developer Intern",
     year: "Jul 2026 – present",
     company: "poiro.com",
     type: "Internship",
     location: "Remote",
     responsibility: [
       [
-        { text: "Built the " },
-        { text: "node and group system", bold: true },
-        { text: " for an AI workflow builder: steps pass typed outputs to each other, and groups run as reusable sub-workflows." },
+        { text: "Creative Asset Manager: ", bold: true },
+        { text: "built one library where every upload and AI generation is saved through a single path, so users can organise assets into folders to build a full film or video. Each generation keeps its model, prompt and reference images. Added " },
+        { text: "Elements", bold: true },
+        { text: ": reusable character, prop and location image sets you can @mention in the prompt box." },
       ],
       [
-        { text: "Designed the data models and backend for a " },
-        { text: "shared asset service used by 3 apps", bold: true },
-        { text: ", migrated existing assets into it, and added folders, prompt Elements and duplicate-image blocking." },
+        { text: "Async Celery worker runtime: ", bold: true },
+        { text: "gave each Celery worker one long-lived event loop and a shared Mongo client and Redis pool. This cut connection churn and ended dead-connection write failures after database restarts." },
       ],
       [
-        { text: "Replaced one query per folder level with a single " },
-        { text: "MongoDB $graphLookup", bold: true },
-        { text: ", and cut folder edits from 3 database round-trips to 1." },
-      ],
-      [
-        { text: "Put Pixabay, Unsplash and Pinterest behind " },
-        { text: "one adapter interface", bold: true },
-        { text: ", with per-org Redis caching and spend caps (500 calls per org per day) to stop runaway costs." },
-      ],
-      [
-        { text: "Cleared " },
-        { text: "1,041 lint findings", bold: true },
-        { text: " across 7 Python packages and made lint blocking in CI; deleted " },
-        { text: "13,769 lines", bold: true },
-        { text: " of dead TypeScript." },
+        { text: "MCP agent access: ", bold: true },
+        { text: "built the auth layer that lets AI assistants like Claude run Poiro apps for a user, capped by scopes and daily and per-run credit limits. RS256 tokens are verified via JWKS, refresh tokens rotate, and grants are checked on every request, so revoking access is instant." },
       ],
     ],
-    techstacks: ["Python", "FastAPI", "MongoDB", "Redis", "Celery", "Next.js", "TypeScript", "Cloudflare R2", "Turborepo"],
+    techstacks: ["Python", "FastAPI", "MongoDB", "Redis", "Celery", "asyncio", "Next.js", "TypeScript", "Cloudflare R2", "Turborepo"],
   },
 ];
 
 export const projects = [
   {
-    title: "Yuvro",
-    category: "Cloud IDE, Kubernetes",
-    description:
-      "A browser IDE like Replit. Each project gets its own container with an editor, terminal, app preview and database browser.",
-    problem:
-      "Running user code needs isolation. Every project needs its own runtime, files and terminal without touching the main servers.",
-    architecture:
-      "React client, a FastAPI service for auth and metadata, a FastAPI orchestrator that starts per-project Kubernetes deployments, and a small runner inside each workspace.",
-    decisions: [
-      "Files are stored once by their SHA-256 hash in S3, so identical files are never duplicated. A scheduled job deletes unused ones.",
-      "The runner streams the terminal over WebSockets, serves file APIs and proxies app ports.",
-      "The file tree is one self-referencing Postgres table with indexes for fast lookups.",
-    ],
-    techstacks: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Kubernetes", "AWS S3", "WebSockets"],
-    github: "shivamxverma/yuvro",
-    link: "https://github.com/shivamxverma/yuvro",
-    status: "active",
-  },
-  {
     title: "CodeSM",
     category: "Sandboxed Code Execution",
     description:
-      "A coding platform that safely runs untrusted code in C, C++, Java, Go, Python and JavaScript.",
+      "A coding platform that safely runs untrusted code and grades it in the background.",
     problem:
       "User code can be malicious or loop forever. It has to run safely, and grading must not block the API.",
     architecture:
-      "Express API stores the submission and puts it on a BullMQ queue. Workers run the code in Docker and save results to PostgreSQL.",
+      "Express API stores the submission and puts it on a BullMQ queue, so it returns instantly. Workers run the code in Docker and save results to PostgreSQL (Drizzle). Problem files live in S3.",
     decisions: [
-      "Each run has no network, a read-only filesystem, dropped capabilities, and limits on memory (256 MB), processes (32), CPU and time.",
-      "One container is reused across a submission's test cases, then destroyed.",
-      "Grading stops at the first failed test case.",
-      "Gemini gives step-by-step hints for each problem.",
+      "Each submission runs in an isolated Docker container with no network, a read-only filesystem, and CPU, memory and time limits. This contains infinite loops, fork bombs and network calls.",
+      "Grading runs on BullMQ workers, so the API never waits on it.",
+      "All of a submission's test cases run in one reused container, and grading stops at the first failure.",
     ],
-    techstacks: ["Node.js", "Express.js", "TypeScript", "BullMQ", "Redis", "PostgreSQL", "Docker", "AWS EC2"],
+    techstacks: ["Node.js", "Express.js", "BullMQ", "Redis", "PostgreSQL", "Drizzle", "Docker", "AWS S3"],
     github: "shivamxverma/CodeSM",
     link: "https://code-sm.vercel.app/",
     status: "live",
@@ -154,24 +115,46 @@ export const projects = [
   },
   {
     title: "DeepDoc",
-    category: "RAG, LLM Evaluation",
+    category: "RAG, Retrieval Tuning",
     description:
       "Ask questions about your PDFs and get answers grounded in the document.",
     problem:
-      "Simple RAG loses context: chunks cut sections in half, and follow-up questions retrieve the wrong parts.",
+      "Simple RAG loses context: chunks cut sections in half, follow-up questions retrieve the wrong parts, and weak matches waste the token budget.",
     architecture:
-      "Next.js app with Azure OpenAI for answers and embeddings, Pinecone for vector search, and PostgreSQL for chat history.",
+      "Next.js app with Azure OpenAI for answers and embeddings, Pinecone for vector search, PostgreSQL (Drizzle) for chat history, and Vercel Blob for uploaded PDFs.",
     decisions: [
-      "Chunks follow the document's sections, so headings and bullets stay together.",
-      "Follow-up questions are rewritten into standalone questions using chat history.",
-      "A 36-case test set compares retrieval settings and prompts. Tuned across 100+ configurations.",
+      "Documents are split into section-aware chunks, so headings and bullets stay together.",
+      "Search only looks at the active document's vectors.",
+      "Follow-up questions are rewritten from chat history before retrieval.",
+      "Retrieved chunks are ranked by score, weak and duplicate matches are dropped, and the best are packed into a fixed token budget.",
+      "Chunking and retrieval settings were tuned across 100+ configurations.",
     ],
-    techstacks: ["Next.js", "TypeScript", "Azure OpenAI", "Pinecone", "PostgreSQL", "Drizzle"],
+    techstacks: ["Next.js", "TypeScript", "Azure OpenAI", "Pinecone", "PostgreSQL", "Drizzle", "Vercel Blob"],
     github: "shivamxverma/DeepDoc",
     link: "https://github.com/shivamxverma/DeepDoc",
     status: "active",
     preview: "/projects/DeepDoc.png",
     previewDark: "/projects/DeepDoc.png",
+  },
+  {
+    title: "Yuvro",
+    category: "Web IDE, Kubernetes",
+    description:
+      "A browser IDE like Replit. Each project runs in its own container with a terminal, file editor, app preview and database browser.",
+    problem:
+      "User code has to run somewhere isolated. Every project needs its own runtime, files and terminal, kept off the main servers.",
+    architecture:
+      "FastAPI services for auth and metadata, an orchestrator that starts a Kubernetes container per project on demand, and a small runner inside each one. Files are stored in S3, metadata in PostgreSQL.",
+    decisions: [
+      "Every file is stored once by its content hash, so identical files across projects are never duplicated. A scheduled garbage collector deletes files nothing points to.",
+      "Each project gets its own on-demand Kubernetes container, keeping user code off the main servers.",
+      "The runner streams a live terminal over WebSockets and serves the file editor, app preview and database browser.",
+    ],
+    techstacks: ["Python", "FastAPI", "PostgreSQL", "Kubernetes", "AWS S3", "WebSockets"],
+    github: "shivamxverma/yuvro",
+    link: "https://drive.google.com/file/d/1Tb_NXvNCp8AcG48K_PUl4GhvSY1ZqiAY/view?usp=sharing",
+    linkLabel: "Demo",
+    status: "active",
   },
   {
     title: "Hireflow",
@@ -275,31 +258,31 @@ export const projects = [
 export const techStackGroups = [
   {
     title: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "C++", "SQL"],
+    items: ["Python", "TypeScript", "SQL", "JavaScript", "C++"],
   },
   {
     title: "Backend",
-    items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "WebSockets", "Socket.io", "WebRTC"],
+    items: ["FastAPI", "Node.js", "Express.js", "asyncio", "REST APIs", "WebSockets", "JWT/OAuth"],
   },
   {
     title: "Databases",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Pinecone", "Prisma", "Drizzle"],
+    items: ["PostgreSQL", "MongoDB", "Redis", "Pinecone", "Drizzle", "Prisma"],
   },
   {
-    title: "Queues and Streaming",
-    items: ["BullMQ", "Celery", "Apache Kafka", "Redis Pub/Sub"],
+    title: "Queues and Workers",
+    items: ["Celery", "BullMQ", "Apache Kafka", "Redis Pub/Sub"],
   },
   {
-    title: "Infrastructure",
-    items: ["Docker", "Kubernetes", "AWS (EC2, S3)", "Cloudflare R2", "Linux", "CI/CD"],
+    title: "Cloud and DevOps",
+    items: ["Docker", "Kubernetes", "AWS (S3, EC2)", "Cloudflare R2", "Linux", "CI/CD"],
   },
   {
     title: "AI",
-    items: ["RAG", "Vector search", "LLM evaluation", "Azure OpenAI", "Gemini"],
+    items: ["RAG", "Vector search", "Azure OpenAI", "MCP", "Gemini"],
   },
   {
-    title: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "Turborepo"],
+    title: "Frontend and Tools",
+    items: ["React", "Next.js", "Tailwind CSS", "Git", "Turborepo"],
   },
 ];
 
@@ -317,15 +300,15 @@ export const currentBuilding = {
 export const learningThemes = [
   "Backend architecture and system design",
   "Async workflows and background jobs",
-  "Applied AI: RAG and evaluating LLM output",
+  "Applied AI: RAG, retrieval tuning and MCP",
   "Developer tools and isolated runtimes",
 ];
 
 export const engineeringStrengths = [
-  "Background jobs and queues",
+  "Async workers and queues",
   "Sandboxed code execution",
-  "Live progress over WebSockets",
-  "Database design and query tuning",
+  "Auth for AI agents (MCP, OAuth)",
+  "Content-addressed storage",
   "Usage-based billing",
   "RAG pipelines",
 ];

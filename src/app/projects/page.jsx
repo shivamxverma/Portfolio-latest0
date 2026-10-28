@@ -74,7 +74,7 @@ const Projects = async () => {
               <div className="detail-links">
                 {p.liveUrl && (
                   <a href={p.liveUrl} {...ext}>
-                    Live ↗
+                    {p.linkLabel ?? "Live"} ↗
                   </a>
                 )}
                 {p.githubUrl && (

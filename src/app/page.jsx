@@ -96,22 +96,24 @@ export default function Home() {
               <p>
                 I am a software engineer who mostly works on the backend.
                 Currently, I am a Fullstack Developer Intern at{" "}
-                <a href="https://poiro.com" {...ext}>poiro.com</a>, where I
-                work on the shared asset service and the AI workflow builder
-                behind its generation tools.
+                <a href="https://poiro.com" {...ext}>poiro.com</a>. I built its
+                creative asset library for AI video, the async runtime its
+                Celery workers run on, and the auth layer that lets AI
+                assistants like Claude run Poiro apps for a user.
               </p>
               <p>
                 Before that, I interned at{" "}
                 <a href="https://klimb.io" {...ext}>klimb.io</a>, where I built
-                a credit ledger that made usage-based billing possible for 6+
-                AI features.
+                a credit ledger that meters 6+ AI features so customers could
+                be charged by usage.
               </p>
               <p>
                 I build a lot of <Link href="/projects">side projects</Link>.
-                Some favourites: <a href="https://github.com/shivamxverma/yuvro" {...ext}>Yuvro</a>,
+                Some favourites: <a href="https://code-sm.vercel.app/" {...ext}>CodeSM</a>,
+                which runs untrusted code in locked-down Docker containers;{" "}
+                <a href="https://github.com/shivamxverma/yuvro" {...ext}>Yuvro</a>,
                 a browser IDE that runs each project in its own Kubernetes
-                container; <a href="https://code-sm.vercel.app/" {...ext}>CodeSM</a>,
-                a sandbox that runs untrusted code safely; and{" "}
+                container; and{" "}
                 <a href="https://github.com/shivamxverma/DeepDoc" {...ext}>DeepDoc</a>,
                 a RAG app for asking questions about PDFs.
               </p>
